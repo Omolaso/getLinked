@@ -2,26 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* NAVMENU STYLED BORDER */
+.styled-border {
+    border: double 1px transparent;
+    border-radius: 80px;
+    background-image: linear-gradient(#150E28, #150E28), radial-gradient(circle at top left, #903AFF, #FE34B9);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    padding: 2px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+/* HEROSECTION STYLES */
+/* .left-masked {
+    width: 50px;
+    height: 70px;
+    background-color: yellow;
+    -webkit-mask-image: url("../public/bulb.png");
+    mask-image: url("../public/bulb.png");
+} */
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+/* .right-masked {
+    width: 100px;
+    height: 100px;
+    -webkit-mask-image: url("../public/virtualBackground.svg");
+    mask-image: url("../public/virtualBackground.svg");
+} */
+
+.right-masked {
+    border: 1px solid red;
+    width: 100%;
+    height: 100%;
+    max-width: 50%;
+    background: blue;
+    -webkit-mask-image: url("../public/virtualBackground.svg");
+    -webkit-mask-mode: alpha;
+    mask-image: url("../public/virtualBackground.svg");
+    mask-mode: alpha;
+    background-blend-mode: hard-light;
 }
