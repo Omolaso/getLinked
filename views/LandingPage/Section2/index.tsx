@@ -2,7 +2,7 @@ import bigIdea from "@/public/bigIdea.png";
 import bigIdeaMobile from "@/public/bigIdeaMobile.png";
 import womanSitting from "@/public/woman_sitting.png";
 
-interface ISectionProps {
+interface ISection2Props {
 	heading1: string;
 	heading2: string;
 	paragraph: string;
@@ -11,7 +11,7 @@ interface ISectionProps {
 	imgPosition: string;
 }
 
-const sectionData: ISectionProps[] = [
+const section2Data: ISection2Props[] = [
 	{
 		img: `${bigIdea.src}`,
 		imgMobile: `${bigIdeaMobile.src}`,
@@ -35,7 +35,7 @@ const Section2 = () => {
 	return (
 		<section className="w-full min-h-screen text-white mx-auto max-w-[100rem]">
 			<div className="flex flex-col w-full">
-				{sectionData.map((data: any) => (
+				{section2Data.map((data: any) => (
 					<div
 						key={data.imgPosition}
 						className="w-full border-b border-b-grey p-4"

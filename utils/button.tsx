@@ -1,6 +1,6 @@
 interface IProps {
 	btnValue: string;
-	onClick: VoidFunction;
+	onClick?: VoidFunction;
 }
 
 const Button = ({ btnValue, onClick }: IProps) => {
