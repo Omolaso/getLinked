@@ -6,7 +6,6 @@ import Link from "next/link";
 import Logo from "@/public/getlinked.svg";
 import { RiMenu4Fill } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
-
 import Button from "@/utils/button";
 import { useRouter } from "next/navigation";
 
@@ -47,7 +46,7 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className="flex items-center justify-between w-full bg-transparent gap-4 min-h-[5rem] border-b border-b-grey p-4">
+		<nav className="flex items-center justify-between w-full bg-transparent gap-4 min-h-[5rem] border-b border-b-grey p-4 max-w-[100rem] mx-auto">
 			<Link
 				href={navLinks[0].path}
 				className="w-full max-h-[2.75rem] max-w-[10.6rem]"

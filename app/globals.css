@@ -11,32 +11,3 @@
     background-clip: padding-box, border-box;
     padding: 2px;
 }
-
-/* HEROSECTION STYLES */
-/* .left-masked {
-    width: 50px;
-    height: 70px;
-    background-color: yellow;
-    -webkit-mask-image: url("../public/bulb.png");
-    mask-image: url("../public/bulb.png");
-} */
-
-/* .right-masked {
-    width: 100px;
-    height: 100px;
-    -webkit-mask-image: url("../public/virtualBackground.svg");
-    mask-image: url("../public/virtualBackground.svg");
-} */
-
-.right-masked {
-    border: 1px solid red;
-    width: 100%;
-    height: 100%;
-    max-width: 50%;
-    background: blue;
-    -webkit-mask-image: url("../public/virtualBackground.svg");
-    -webkit-mask-mode: alpha;
-    mask-image: url("../public/virtualBackground.svg");
-    mask-mode: alpha;
-    background-blend-mode: hard-light;
-}
