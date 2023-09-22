@@ -28,11 +28,6 @@ const section3Data: ISection3Props[] = [
 			"Evaluate the technical sophistication of the solution. Judges would consider the complexity of the code, the use of advanced technologies or algorithms, and the scalability of the solution.",
 	},
 	{
-		key: "Technical complexity",
-		value:
-			"Evaluate the technical sophistication of the solution. Judges would consider the complexity of the code, the use of advanced technologies or algorithms, and the scalability of the solution.",
-	},
-	{
 		key: "Adherence to Hackathon Rules",
 		value:
 			"Judges will Ensure that the team adhered to the rules and guidelines of the hackathon, including deadlines, use of specific technologies or APIs, and any other competition-specific requirements",

@@ -21,7 +21,7 @@ const navLinks: INavProps[] = [
 	},
 	{
 		name: "Timeline",
-		path: "/",
+		path: "#timeline",
 	},
 	{
 		name: "Overview",
@@ -29,7 +29,7 @@ const navLinks: INavProps[] = [
 	},
 	{
 		name: "FAQs",
-		path: "/",
+		path: "#faqs",
 	},
 	{
 		name: "Contact",
