@@ -1,22 +1,15 @@
 "use client";
 
-import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
-import TimelineDot from "@mui/lab/TimelineDot";
-import Typography from "@mui/material/Typography";
-
-interface ITimeline {
+import LargeScreenTimeline from "./largeScreenTL";
+import SmallScreenTimeline from "./smallScreenTL";
+export interface ITimeline {
 	heading1: string;
 	paragraph: string;
 	heading2: string;
 	position: string;
 }
 
-const sectionTimeline: ITimeline[] = [
+export const sectionTimeline: ITimeline[] = [
 	{
 		heading1: "Hackathon Announcement",
 		paragraph:
@@ -77,88 +70,10 @@ const Section5 = () => {
 					</span>
 				</div>
 				<div className="hidden md:block w-full max-w-[75rem] mx-auto">
-					{sectionTimeline.map((timeline: any, index: number) => (
-						<Timeline
-							position="alternate"
-							key={timeline.heading1}
-							className="w-full"
-						>
-							{timeline.position === "left" ? (
-								<TimelineItem>
-									<TimelineContent sx={{ m: "auto 0", textAlign: "right" }}>
-										<Typography
-											variant="h6"
-											component="span"
-											className="text-[1.5rem] text-purple font-bold"
-										>
-											{timeline.heading1}
-										</Typography>
-										<Typography className="text-[0.875rem] font-normal">
-											{timeline.paragraph}
-										</Typography>
-									</TimelineContent>
-									<TimelineSeparator>
-										<TimelineConnector className="bg-gradient-to-r from-blue to-purple min-h-[3rem] w-full max-w-[4px]" />
-										<TimelineDot
-											className="bg-gradient-to-r from-blue to-purple"
-											sx={{
-												display: "flex",
-												alignItems: "center",
-												justifyContent: "center",
-												width: "50px",
-												height: "50px",
-											}}
-										>
-											{index + 1}
-										</TimelineDot>
-									</TimelineSeparator>
-									<TimelineOppositeContent
-										sx={{ m: "auto 0", textAlign: "left" }}
-										className="text-[1.5rem] text-purple font-bold"
-									>
-										{timeline.heading2}
-									</TimelineOppositeContent>
-								</TimelineItem>
-							) : (
-								<TimelineItem>
-									<TimelineOppositeContent
-										sx={{ m: "auto 0" }}
-										align="right"
-										className="text-[1.5rem] text-purple font-bold"
-									>
-										{timeline.heading2}
-									</TimelineOppositeContent>
-									<TimelineSeparator>
-										<TimelineConnector className="bg-gradient-to-r from-blue to-purple min-h-[3rem] w-full max-w-[4px]" />
-										<TimelineDot
-											className="bg-gradient-to-r from-blue to-purple"
-											sx={{
-												display: "flex",
-												alignItems: "center",
-												justifyContent: "center",
-												width: "50px",
-												height: "50px",
-											}}
-										>
-											{index + 1}
-										</TimelineDot>
-									</TimelineSeparator>
-									<TimelineContent sx={{ m: "auto 0", textAlign: "left" }}>
-										<Typography
-											variant="h6"
-											component="span"
-											className="text-[1.5rem] text-purple font-bold"
-										>
-											{timeline.heading1}
-										</Typography>
-										<Typography className="text-[0.875rem] font-normal">
-											{timeline.paragraph}
-										</Typography>
-									</TimelineContent>
-								</TimelineItem>
-							)}
-						</Timeline>
-					))}
+					<LargeScreenTimeline />
+				</div>
+				<div className="block md:hidden w-full max-w-[75rem] mx-auto">
+					<SmallScreenTimeline />
 				</div>
 			</div>
 		</section>
