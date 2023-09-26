@@ -16,7 +16,7 @@ import RepeatIcon from "@mui/icons-material/Repeat";
 const LargeScreenTimeline = () => {
 	return (
 		<>
-			{sectionTimeline.map((timeline: ITimeline, index: number) => (
+			{/* {sectionTimeline.map((timeline: ITimeline, index: number) => (
 				<div key={timeline.heading1} className="w-full">
 					{timeline.position === "left" ? (
 						<Timeline position="alternate">
@@ -33,8 +33,8 @@ const LargeScreenTimeline = () => {
 										{timeline.paragraph}
 									</Typography>
 								</TimelineContent>
-								<TimelineSeparator className="min-h-[3rem]">
-									<TimelineConnector className="bg-gradient-to-r from-blue to-purple max-h-[3rem] w-full max-w-[4px]" />
+								<TimelineSeparator className="max-h-[7rem]">
+									<TimelineConnector className="bg-gradient-to-r from-blue to-purple w-full max-w-[4px]" />
 									<TimelineDot
 										className="bg-gradient-to-r from-blue to-purple"
 										sx={{
@@ -67,7 +67,7 @@ const LargeScreenTimeline = () => {
 								>
 									{timeline.heading2}
 								</TimelineOppositeContent>
-								<TimelineSeparator className="min-h-[3rem]">
+								<TimelineSeparator className="max-h-[7rem]">
 									<TimelineConnector className="bg-gradient-to-r from-blue to-purple w-full max-w-[4px]" />
 									<TimelineDot
 										className="bg-gradient-to-r from-blue to-purple"
@@ -98,46 +98,95 @@ const LargeScreenTimeline = () => {
 						</Timeline>
 					)}
 				</div>
-			))}
+			))} */}
+			<Timeline position="alternate">
+				<TimelineItem>
+					<TimelineOppositeContent
+						sx={{ m: "auto 0" }}
+						align="right"
+						variant="body2"
+						color="text.secondary"
+					>
+						9:30 am
+					</TimelineOppositeContent>
+					<TimelineSeparator>
+						<TimelineConnector />
+						<TimelineDot>
+							<FastfoodIcon />
+						</TimelineDot>
+						<TimelineConnector />
+					</TimelineSeparator>
+					<TimelineContent sx={{ py: "12px", px: 2 }}>
+						<Typography variant="h6" component="span">
+							Eat
+						</Typography>
+						<Typography>Because you need strength</Typography>
+					</TimelineContent>
+				</TimelineItem>
+				<TimelineItem>
+					<TimelineOppositeContent
+						sx={{ m: "auto 0" }}
+						variant="body2"
+						color="text.secondary"
+					>
+						10:00 am
+					</TimelineOppositeContent>
+					<TimelineSeparator>
+						<TimelineConnector />
+						<TimelineDot color="primary">
+							<LaptopMacIcon />
+						</TimelineDot>
+						<TimelineConnector />
+					</TimelineSeparator>
+					<TimelineContent sx={{ py: "12px", px: 2 }}>
+						<Typography variant="h6" component="span">
+							Code
+						</Typography>
+						<Typography>Because it&apos;s awesome!</Typography>
+					</TimelineContent>
+				</TimelineItem>
+				<TimelineItem>
+					<TimelineSeparator>
+						<TimelineConnector />
+						<TimelineDot color="primary" variant="outlined">
+							<HotelIcon />
+						</TimelineDot>
+						<TimelineConnector sx={{ bgcolor: "secondary.main" }} />
+					</TimelineSeparator>
+					<TimelineContent sx={{ py: "12px", px: 2 }}>
+						<Typography variant="h6" component="span">
+							Sleep
+						</Typography>
+						<Typography>Because you need rest</Typography>
+					</TimelineContent>
+				</TimelineItem>
+				<TimelineItem>
+					<TimelineSeparator>
+						<TimelineConnector sx={{ bgcolor: "secondary.main" }} />
+						<TimelineDot
+							color="secondary"
+							sx={{
+								display: "flex",
+								alignItems: "center",
+								justifyContent: "center",
+								width: "50px",
+								height: "50px",
+							}}
+						>
+							<RepeatIcon />
+						</TimelineDot>
+						<TimelineConnector />
+					</TimelineSeparator>
+					<TimelineContent sx={{ py: "12px", px: 2 }}>
+						<Typography variant="h6" component="span">
+							Repeat
+						</Typography>
+						<Typography>Because this is the life you love!</Typography>
+					</TimelineContent>
+				</TimelineItem>
+			</Timeline>
 		</>
 	);
 };
 
 export default LargeScreenTimeline;
-
-// <TimelineItem>
-// 	<TimelineOppositeContent
-// 		sx={{ m: "auto 0" }}
-// 		align="right"
-// 		className="text-[1.5rem] text-purple font-bold"
-// 	>
-// 		{timeline.heading2}
-// 	</TimelineOppositeContent>
-// 	<TimelineSeparator>
-// 		<TimelineConnector className="bg-gradient-to-r from-blue to-purple min-h-[3rem] w-full max-w-[4px]" />
-// 		<TimelineDot
-// 	className="bg-gradient-to-r from-blue to-purple"
-// 	sx={{
-// 		display: "flex",
-// 		alignItems: "center",
-// 		justifyContent: "center",
-// 		width: "50px",
-// 		height: "50px",
-// 	}}
-// >
-// 	{index + 1}
-// </TimelineDot>
-// 	</TimelineSeparator>
-// 	<TimelineContent sx={{ m: "auto 0", textAlign: "left" }}>
-// 		<Typography
-// 			variant="h6"
-// 			component="span"
-// 	className="text-[1.5rem] text-purple font-bold"
-// >
-// 	{timeline.heading1}
-// 		</Typography>
-// <Typography className="text-[0.875rem] font-normal">
-// 	{timeline.paragraph}
-// 		</Typography>
-// 	</TimelineContent>
-// </TimelineItem>
