@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/getlinked.svg";
 import instagram from "@/public/instagram.svg";
-import facebook from "@/public/facebook.svg";
-import twitter from "@/public/twitter.svg";
+// import facebook from "@/public/facebook.svg";
+// import twitter from "@/public/twitter.svg";
 import linkedIn from "@/public/linkedIn.svg";
 import phoneNumber from "@/public/contact-phone.svg";
 import location from "@/public/location.svg";
@@ -57,8 +57,8 @@ const footerLinks: IUsefulLinks[] = [
 
 const socialMediaLinks: ISocial[] = [
 	{ imgUrl: `${instagram.src}`, alt: "instagram" },
-	{ imgUrl: `${twitter.src}`, alt: "twitter" },
-	{ imgUrl: `${facebook.src}`, alt: "facebook" },
+	// { imgUrl: `${twitter.src}`, alt: "twitter" },
+	// { imgUrl: `${facebook.src}`, alt: "facebook" },
 	{ imgUrl: `${linkedIn.src}`, alt: "linkedIn" },
 ];
 
