@@ -6,7 +6,7 @@ import Link from "next/link";
 import Logo from "@/public/getlinked.svg";
 import instagram from "@/public/instagram.svg";
 import twitter from "@/public/twitter.svg";
-import facebook from "@/public/facebook.svg";
+import facebook from "@/public/Facebook.svg";
 import linkedIn from "@/public/linkedIn.svg";
 import phoneNumber from "@/public/contact-phone.svg";
 import location from "@/public/location.svg";
