@@ -8,6 +8,8 @@ import { RiMenu4Fill } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
 import Button from "@/utils/button";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+import { motionContainer, motionElements } from "@/utils/motion";
 
 interface INavProps {
 	name: string;
@@ -46,7 +48,10 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className="flex items-center justify-between w-full bg-transparent gap-4 min-h-[5rem] border-b border-b-grey p-4 max-w-[100rem] mx-auto">
+		<nav
+			id="back-to-top-anchor"
+			className="flex items-center justify-between w-full bg-transparent gap-4 min-h-[5rem] border-b border-b-grey p-4 max-w-[100rem] mx-auto"
+		>
 			<Link
 				href={navLinks[0].path}
 				className="w-full max-h-[2.75rem] max-w-[10.6rem]"
@@ -59,19 +64,28 @@ const Navbar = () => {
 					priority
 				/>
 			</Link>
-
 			<div className="hidden lg:flex items-center justify-between w-full max-w-[45rem] gap-4">
-				<ul className="flex items-center justify-between text-white w-full max-w-[25rem]">
+				<motion.ul
+					variants={motionContainer}
+					initial="hidden"
+					animate="visible"
+					className="flex items-center justify-between text-white w-full max-w-[25rem]"
+				>
 					{navLinks.slice(1, navLinks.length).map((navLink: any) => (
-						<li key={navLink.name}>
+						<motion.li key={navLink.name} variants={motionElements}>
 							<Link href={navLink.path}>{navLink.name}</Link>
-						</li>
+						</motion.li>
 					))}
-				</ul>
+				</motion.ul>
 
-				<div className="w-full max-w-[10rem]">
+				<motion.div
+					variants={motionContainer}
+					initial="hidden"
+					animate="visible"
+					className="w-full max-w-[10rem]"
+				>
 					<Button btnValue="Register" onClick={navigate} />
-				</div>
+				</motion.div>
 			</div>
 
 			{/*NAVS MOBILE VIEW */}

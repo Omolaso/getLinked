@@ -1,7 +1,10 @@
 "use client";
 
+import { useRef } from "react";
 import LargeScreenTimeline from "./largeScreenTL";
 import SmallScreenTimeline from "./smallScreenTL";
+import { motion, useInView } from "framer-motion";
+import { motionContainer, motionElementsInverse } from "@/utils/motion";
 export interface ITimeline {
 	heading1: string;
 	paragraph: string;
@@ -47,27 +50,54 @@ export const sectionTimeline: ITimeline[] = [
 ];
 
 const Section5 = () => {
+	const ref = useRef(null);
+	const isInView = useInView(ref, { once: true });
+
 	return (
 		<section
 			id="timeline"
 			className="w-full flex border-b border-b-grey min-h-screen text-white mx-auto max-w-[100rem] py-0 md:py-6"
 		>
 			<div className="flex flex-col items-center gap-8 p-4 w-full">
-				<div className="flex flex-col items-center justify-center text-center w-full max-w-[22rem] mx-auto">
-					<span className="text-[1.25rem] md:text-[2rem] font-bold">
+				<motion.div
+					ref={ref}
+					variants={motionContainer}
+					viewport={{ once: true }}
+					className="flex flex-col items-center justify-center text-center w-full max-w-[22rem] mx-auto"
+				>
+					<motion.span
+						variants={motionElementsInverse}
+						className="text-[1.25rem] md:text-[2rem] font-bold"
+					>
 						Timeline
-					</span>
-					<span className="text-[0.875rem] font-normal">
+					</motion.span>
+					<motion.span
+						variants={motionElementsInverse}
+						className="text-[0.875rem] font-normal"
+					>
 						Here is the breakdown of the time we anticipate using for the
 						upcoming event.
-					</span>
-				</div>
-				<div className="hidden lg:block w-full max-w-[80rem] mx-auto">
+					</motion.span>
+				</motion.div>
+				<motion.div
+					ref={ref}
+					variants={motionContainer}
+					viewport={{ once: true }}
+					transition={{ duration: 3, ease: "easeInOut" }}
+					className="hidden lg:block w-full max-w-[80rem] mx-auto"
+				>
 					<LargeScreenTimeline />
-				</div>
-				<div className="block lg:hidden w-full max-w-[80rem] mx-auto">
+				</motion.div>
+				<motion.div
+					ref={ref}
+					variants={motionContainer}
+					initial="hidden"
+					animate={isInView ? "visible" : ""}
+					viewport={{ once: true }}
+					className="block lg:hidden w-full max-w-[80rem] mx-auto"
+				>
 					<SmallScreenTimeline />
-				</div>
+				</motion.div>
 			</div>
 		</section>
 	);
