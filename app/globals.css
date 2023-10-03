@@ -6,7 +6,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* NAVMENU STYLED BORDER */
+/* SIDEBAR STYLED BORDER */
 .styled-border {
     border: double 1px transparent;
     border-radius: 80px;

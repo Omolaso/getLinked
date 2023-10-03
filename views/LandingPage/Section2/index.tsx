@@ -1,6 +1,12 @@
 import bigIdea from "@/public/bigIdea.png";
 import bigIdeaMobile from "@/public/bigIdeaMobile.png";
 import womanSitting from "@/public/woman_sitting.png";
+import {
+	motionContainer,
+	motionElements,
+	motionElementsInverse,
+} from "@/utils/motion";
+import { motion } from "framer-motion";
 
 interface ISection2Props {
 	heading1: string;
@@ -35,13 +41,19 @@ const Section2 = () => {
 	return (
 		<section className="w-full min-h-screen text-white mx-auto max-w-[100rem]">
 			<div className="flex flex-col w-full">
-				{section2Data.map((data: any) => (
-					<div
+				{section2Data.map((data: ISection2Props) => (
+					<motion.div
 						key={data.imgPosition}
 						className="w-full border-b border-b-grey p-4"
 					>
 						{data.imgPosition === "left" ? (
-							<div className="flex flex-col md:flex-row text-center md:text-left items-center justify-between w-full py-6 max-w-[70rem] mx-auto gap-2">
+							<motion.div
+								initial={{ opacity: 0 }}
+								whileInView={{ opacity: 1 }}
+								viewport={{ once: true }}
+								transition={{ duration: 2, ease: "easeInOut" }}
+								className="flex flex-col md:flex-row text-center md:text-left items-center justify-between w-full py-6 max-w-[70rem] mx-auto gap-2"
+							>
 								<div
 									className="w-full min-h-[27rem] max-h-[27.5rem] max-w-[33rem] hidden md:block"
 									style={{
@@ -71,9 +83,15 @@ const Section2 = () => {
 										{data.paragraph}
 									</p>
 								</div>
-							</div>
+							</motion.div>
 						) : (
-							<div className="flex flex-col md:flex-row-reverse text-center md:text-left items-center justify-between w-full py-6 max-w-[70rem] mx-auto gap-2">
+							<motion.div
+								initial={{ opacity: 0 }}
+								whileInView={{ opacity: 1 }}
+								viewport={{ once: true }}
+								transition={{ duration: 2, ease: "easeInOut" }}
+								className="flex flex-col md:flex-row-reverse text-center md:text-left items-center justify-between w-full py-6 max-w-[70rem] mx-auto gap-2"
+							>
 								<div
 									className="w-full min-h-[27rem] max-h-[27.5rem] max-w-[33rem]"
 									style={{
@@ -93,9 +111,9 @@ const Section2 = () => {
 										{data.paragraph}
 									</p>
 								</div>
-							</div>
+							</motion.div>
 						)}
-					</div>
+					</motion.div>
 				))}
 			</div>
 		</section>
