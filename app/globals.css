@@ -6,6 +6,15 @@ html {
     scroll-behavior: smooth;
 }
 
+/* ACTIVE NAVLINK STYLE */
+.active-navlink {
+    background: linear-gradient(45deg, #D434FE, #903AFF);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+}
+
 /* SIDEBAR STYLED BORDER */
 .styled-border {
     border: double 1px transparent;

@@ -22,13 +22,13 @@ interface IUsefulLinks {
 	path: string;
 }
 
-interface ISocial {
+export interface ISocial {
 	imgUrl: string;
 	alt: string;
 }
 
-interface IContact {
-	imgUrl: string;
+export interface IContact {
+	imgUrl?: string;
 	address: string;
 }
 
@@ -55,7 +55,7 @@ const footerLinks: IUsefulLinks[] = [
 	},
 ];
 
-const socialMediaLinks: ISocial[] = [
+export const socialMediaLinks: ISocial[] = [
 	{ imgUrl: `${instagram.src}`, alt: "instagram" },
 	{ imgUrl: `${twitter.src}`, alt: "twitter" },
 	{ imgUrl: `${facebook.src}`, alt: "facebook" },
@@ -164,7 +164,7 @@ const Footer = () => {
 							</div>
 						</motion.div>
 					</motion.ul>
-					<motion.ul
+					<motion.div
 						ref={ref}
 						variants={motionContainer}
 						initial="hidden"
@@ -177,7 +177,7 @@ const Footer = () => {
 						>
 							Contact Us
 						</motion.span>
-						<motion.div
+						<motion.ul
 							variants={motionContainer}
 							className="flex flex-col w-full gap-5"
 						>
@@ -187,7 +187,7 @@ const Footer = () => {
 									className="flex flex-row items-start gap-4"
 								>
 									<Image
-										src={contact.imgUrl}
+										src={contact.imgUrl!}
 										alt={contact.address}
 										width={19}
 										height={18}
@@ -197,8 +197,8 @@ const Footer = () => {
 									</span>
 								</li>
 							))}
-						</motion.div>
-					</motion.ul>
+						</motion.ul>
+					</motion.div>
 				</div>
 				<motion.span
 					variants={motionElementsInverse}
