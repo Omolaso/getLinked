@@ -7,7 +7,7 @@ import Logo from "@/public/getlinked.svg";
 import { RiMenu4Fill } from "react-icons/ri";
 import { AiOutlineClose } from "react-icons/ai";
 import Button from "@/utils/button";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { motionContainer, motionElements } from "@/utils/motion";
 
@@ -23,7 +23,7 @@ const navLinks: INavProps[] = [
 	},
 	{
 		name: "Timeline",
-		path: "#timeline",
+		path: "/#timeline",
 	},
 	{
 		name: "Overview",
@@ -31,7 +31,7 @@ const navLinks: INavProps[] = [
 	},
 	{
 		name: "FAQs",
-		path: "#faqs",
+		path: "/#faqs",
 	},
 	{
 		name: "Contact",
@@ -42,6 +42,7 @@ const navLinks: INavProps[] = [
 const Navbar = () => {
 	const [modal, setModal] = useState(false);
 	const router = useRouter();
+	const pathname: string = usePathname();
 
 	const navigate = () => {
 		router.push("/register");
@@ -71,9 +72,15 @@ const Navbar = () => {
 					animate="visible"
 					className="flex items-center justify-between text-white w-full max-w-[25rem]"
 				>
-					{navLinks.slice(1, navLinks.length).map((navLink: any) => (
+					{navLinks.slice(1, navLinks.length).map((navLink: INavProps) => (
 						<motion.li key={navLink.name} variants={motionElements}>
-							<Link href={navLink.path}>{navLink.name}</Link>
+							{pathname === navLink.path ? (
+								<Link href={navLink.path} className="active-navlink">
+									{navLink.name}
+								</Link>
+							) : (
+								<Link href={navLink.path}>{navLink.name}</Link>
+							)}
 						</motion.li>
 					))}
 				</motion.ul>
@@ -110,15 +117,25 @@ const Navbar = () => {
 							<AiOutlineClose className="text-white font-bold w-8 h-8" />
 						</button>
 						<ul className="flex flex-col gap-8 text-lg">
-							{navLinks.slice(1, navLinks.length).map((navLink: any) => (
+							{navLinks.slice(1, navLinks.length).map((navLink: INavProps) => (
 								<li key={navLink.name} className="w-full min-h-[2.5rem]">
-									<Link
-										href={navLink.path}
-										onClick={() => setModal(false)}
-										className="text-white font-medium text-lg"
-									>
-										{navLink.name}
-									</Link>
+									{navLink.path.startsWith("#") ? (
+										<a
+											href={navLink.path}
+											onClick={() => setModal(false)}
+											className="text-white font-medium text-lg"
+										>
+											{navLink.name}
+										</a>
+									) : (
+										<Link
+											href={navLink.path}
+											onClick={() => setModal(false)}
+											className="text-white font-medium text-lg"
+										>
+											{navLink.name}
+										</Link>
+									)}
 								</li>
 							))}
 						</ul>
