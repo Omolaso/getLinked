@@ -8,6 +8,7 @@ import {
 	motionElements,
 	motionElementsInverse,
 } from "@/utils/motion";
+import { axiosFetcher } from "@/utils/axiosFetcher";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Button from "@/utils/button";
@@ -27,16 +28,38 @@ const contactAddress: IContact[] = [
 
 const LargeScreenContact = () => {
 	const [open, setOpen] = useState(false); //SNACKBAR
+	const [submitting, setSubmitting] = useState(false); //Submitting
 	const ref = useRef(null);
 	const isInView = useInView(ref, { once: true });
 
+	//SNACKBAR
 	const handleClick = () => {
 		setOpen(true);
 	};
 
+	const contactUs = (email: string, name: string, message: string) => {
+		setSubmitting(true);
+		const contactInfo = {
+			email: email,
+			first_name: name,
+			message: message,
+		};
+
+		try {
+			axiosFetcher.post("/hackathon/contact-form", contactInfo).then((res) => {
+				// console.log(res);
+				setSubmitting(false);
+				handleClick();
+			});
+		} catch (error) {
+			console.log(error);
+			setSubmitting(false);
+		}
+	};
+
 	return (
 		<div className="w-full">
-			<div className="hidden md:flex flex-row items-center justify-between max-w-[69.75rem] w-full mx-auto py-8">
+			<div className="flex flex-row items-center justify-between max-w-[69.75rem] w-full mx-auto py-8">
 				<div className="flex flex-col items-start gap-4 w-full">
 					<motion.div
 						ref={ref}
@@ -75,7 +98,7 @@ const LargeScreenContact = () => {
 							variants={motionElementsInverse}
 							className="text-xs text-purple"
 						>
-							Follow us
+							Share on
 						</motion.span>
 						<motion.div
 							variants={motionElementsInverse}
@@ -101,7 +124,7 @@ const LargeScreenContact = () => {
 						background: "rgba(255, 255, 255, 0.03)",
 						boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
 					}}
-					className="flex items-center justify-center w-full min-h-[30rem] max-w-[38.5625rem] p-2"
+					className="flex items-center justify-center w-full min-h-[30rem] max-w-[38.5625rem] p-4"
 				>
 					<div className="flex flex-col items-center justify-center gap-3 w-full max-w-[27.3125rem]">
 						<div className="self-start flex flex-col items-start justify-between min-h-[3.5625rem]">
@@ -115,9 +138,7 @@ const LargeScreenContact = () => {
 						<Formik
 							initialValues={{ name: "", email: "", textArea: "" }}
 							validationSchema={Yup.object({
-								name: Yup.string()
-									.max(15, "Must be 15 characters or less")
-									.required("Required"),
+								name: Yup.string().required("Required"),
 
 								email: Yup.string()
 									.email("Invalid email address")
@@ -126,9 +147,8 @@ const LargeScreenContact = () => {
 								textArea: Yup.string().required("Required"),
 							})}
 							onSubmit={(values, { resetForm }) => {
-								console.log(values);
+								contactUs(values.email, values.name, values.textArea);
 
-								handleClick();
 								resetForm();
 							}}
 						>
@@ -140,7 +160,7 @@ const LargeScreenContact = () => {
 									<Field
 										name="name"
 										type="text"
-                                        placeholder="Name"
+										placeholder="Name"
 										className="bg-black border rounded min-h-[3rem] px-3 outline-0 focus:outline-0"
 									/>
 									<div className="text-red font-bold text-base">
@@ -155,7 +175,7 @@ const LargeScreenContact = () => {
 									<Field
 										name="email"
 										type="email"
-                                        placeholder="Mail"
+										placeholder="Mail"
 										className="bg-black border rounded min-h-[3rem] px-3 outline-0 focus:outline-0"
 									/>
 									<div className="text-red font-bold text-base">
@@ -178,7 +198,10 @@ const LargeScreenContact = () => {
 									</div>
 								</motion.div>
 
-								<Button type="submit" btnValue="Submit" />
+								<Button
+									type="submit"
+									btnValue={submitting ? "Submitting..." : "Submit"}
+								/>
 							</Form>
 						</Formik>
 					</div>
