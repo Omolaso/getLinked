@@ -26,6 +26,7 @@ const config: Config = {
 				purple: "#D434FE",
 				pink: "#FE34B9",
 				red: "#ED1C24",
+				registerSuccessBg: "#17102A",
 			},
 			btnBackgroundImage: {
 				"gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

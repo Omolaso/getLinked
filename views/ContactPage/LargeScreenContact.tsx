@@ -26,6 +26,13 @@ const contactAddress: IContact[] = [
 	{ address: "we are open from Monday-Friday	08:00am - 05:00pm" },
 ];
 
+export const formContainerStyle = {
+	width: "100%",
+	borderRadius: "0.75rem",
+	background: "rgba(255, 255, 255, 0.03)",
+	boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+};
+
 const LargeScreenContact = () => {
 	const [open, setOpen] = useState(false); //SNACKBAR
 	const [submitting, setSubmitting] = useState(false); //Submitting
@@ -54,12 +61,14 @@ const LargeScreenContact = () => {
 		} catch (error) {
 			console.log(error);
 			setSubmitting(false);
+		} finally {
+			setSubmitting(false);
 		}
 	};
 
 	return (
 		<div className="w-full">
-			<div className="flex flex-row items-center justify-between max-w-[69.75rem] w-full mx-auto py-8">
+			<div className="flex flex-row items-center justify-between max-w-[70rem] w-full mx-auto py-8">
 				<div className="flex flex-col items-start gap-4 w-full">
 					<motion.div
 						ref={ref}
@@ -118,12 +127,7 @@ const LargeScreenContact = () => {
 				</div>
 
 				<div
-					style={{
-						width: "100%",
-						borderRadius: "0.75rem",
-						background: "rgba(255, 255, 255, 0.03)",
-						boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-					}}
+					style={formContainerStyle}
 					className="flex items-center justify-center w-full min-h-[30rem] max-w-[38.5625rem] p-4"
 				>
 					<div className="flex flex-col items-center justify-center gap-3 w-full max-w-[27.3125rem]">
