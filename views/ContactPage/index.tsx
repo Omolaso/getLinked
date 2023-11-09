@@ -5,12 +5,12 @@ import SmallScreenContact from "./SmallScreenContact";
 const ContactPage = () => {
 	return (
 		<>
-			<main className="hidden md:block w-full bg-black min-h-screen">
+			<section className="hidden md:block w-full bg-black min-h-screen">
 				<Navbar />
-				<section className="flex items-center justify-center min-h-[50vh] p-4 bg-[transparent] text-white">
+				<div className="flex items-center justify-center min-h-[50vh] p-4 bg-[transparent] text-white w-full">
 					<LargeScreenContact />
-				</section>
-			</main>
+				</div>
+			</section>
 			<SmallScreenContact />
 		</>
 	);
